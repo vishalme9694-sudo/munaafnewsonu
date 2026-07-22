@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ఉచితంగా Stock Market నేర్చుకోండి | Telugu Stock Community</title>
+  <meta name="description" content="తెలుగులో Stock Market Analysis, Price Action, Risk Management నేర్చుకోండి. 100% Free Telegram Community.">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1025708333655560');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1025708333655560&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+  <style>
+    :root {
+      --bg-dark: #070d1e;
+      --bg-card: rgba(255, 255, 255, 0.04);
+      --gold-accent: #ffb703;
+      --gold-glow: rgba(255, 183, 3, 0.3);
+      --sky-blue: #00b4d8;
+      --text-white: #ffffff;
+      --text-gray: #d1d5db;
+      --text-telugu: #e2e8f0;
+      /* Native System Fonts - Zero Network Delay */
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 15px 0;
+    }
+
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--sky-blue), var(--gold-accent));
+      width: 0%;
+      z-index: 9999;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      text-align: center;
+      padding: 40px 0 25px;
+      background: radial-gradient(circle at top, #152244 0%, var(--bg-dark) 80%);
+    }
+
+    .brand-logo {
+      border-radius: 50%;
+      border: 2px solid var(--gold-accent);
+      box-shadow: 0 0 15px var(--gold-glow);
+      margin-bottom: 12px;
+      object-fit: cover;
+      aspect-ratio: 1/1;
+    }
+
+    .telugu-badge {
+      display: inline-block;
+      background: rgba(255, 183, 3, 0.15);
+      border: 1px solid var(--gold-accent);
+      color: var(--gold-accent);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .main-heading {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-white);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .main-heading span {
+      color: var(--gold-accent);
+    }
+
+    .sub-heading {
+      font-size: 1rem;
+      color: var(--text-telugu);
+      max-width: 650px;
+      margin: 0 auto 22px;
+    }
+
+    /* CTA Button */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #0088cc, #005580);
+      border: 1px solid #33b5e5;
+      color: var(--text-white);
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0, 136, 204, 0.4);
+      animation: pulse 2s infinite;
+      transition: transform 0.2s ease;
+      text-decoration: none;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+
+    /* Features Section */
+    .features-section {
+      padding: 35px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 25px;
+      color: var(--gold-accent);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .icon-wrapper {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      color: var(--text-white);
+    }
+
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--text-gray);
+    }
+
+    /* Glass Card CTA */
+    .cta-section {
+      padding: 20px 0 60px;
+    }
+
+    .glass-card {
+      background: rgba(255, 183, 3, 0.03);
+      border: 1px solid rgba(255, 183, 3, 0.2);
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .glass-card h2 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .glass-card p {
+      color: var(--text-gray);
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    /* Mobile Sticky CTA */
+    .mobile-sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px;
+      background: rgba(7, 13, 30, 0.95);
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+
+    .sticky-btn {
+      width: 100%;
+      padding: 12px 0;
+    }
+
+    .floating-tg-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 15px;
+      background: #0088cc;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      z-index: 999;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 85px;
+      right: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 998;
+    }
+
+    .footer-section {
+      background: #03060f;
+      padding: 25px 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .footer-links button {
+      background: none;
+      border: none;
+      color: var(--text-gray);
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .copyright {
+      font-size: 0.75rem;
+      color: #6c757d;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+
+    .modal-content {
+      background: #0d1527;
+      border: 1px solid rgba(255,183,3,0.3);
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 25px;
+      position: relative;
+      color: var(--text-gray);
+      font-size: 0.9rem;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .main-heading { font-size: 1.45rem; }
+      .sub-heading { font-size: 0.9rem; }
+      .mobile-sticky-cta { display: block; }
+      .floating-tg-btn { bottom: 65px; }
+      .back-to-top { bottom: 125px; }
+      .cta-section { padding-bottom: 90px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <header class="hero-section">
+    <div class="container">
+      <img src="munaaf.jpg" alt="Logo" class="brand-logo" width="80" height="80" onerror="this.style.display='none'">
+      
+      <div>
+        <span class="telugu-badge">🎯 TRADE WITH MUNAAF </span>
+      </div>
+      
+      <h1 class="main-heading">
+        తెలుగులో Stock Market నేర్చుకోండి <br><span>Free Telegram Community</span>
+      </h1>
+      
+      <p class="sub-heading">
+        Market Analysis, Price Action, Risk Management మరియు Trading Concepts పూర్తిగా ఉచితంగా తెలుగులో నేర్చుకోండి.
+      </p>
+      
+      <button class="cta-btn primary-btn telegram-trigger" aria-label="Join Free Telegram Channel">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.25.38-.51 1.07-.78 4.18-1.82 6.97-3.02 8.37-3.61 3.98-1.66 4.81-1.95 5.35-1.96.12 0 .38.03.55.17.14.12.18.28.2.4.02.14.02.34 0 .58z"/>
+        </svg>
+        JOIN FREE TELEGRAM
+      </button>
+    </div>
+  </header>
+
+  <section class="features-section">
+    <div class="container">
+      <h2 class="section-title">మా కమ్యూనిటీలో మీరు ఏమి నేర్చుకుంటారు?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="icon-wrapper">📈</div>
+          <h3>Daily Market Analysis</h3>
+          <p>డైలీ మార్కెట్ ఓపెన్ కాకముందే కీ లెవెల్స్ మరియు మార్కెట్ వ్యూ తెలుగులో పంచుకోబడుతుంది.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-wrapper">📚</div>
+          <h3>Price Action Learning</h3>
+          <p>Candlestick patterns, Support & Resistance కాన్సెప్ట్స్ సులభమైన పద్ధతిలో నేర్చుకోండి.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-wrapper">📊</div>
+          <h3>Swing Trading Ideas</h3>
+          <p>కేవలం చదువుకోడానికి మరియు నేర్చుకోవడానికి మాత్రమే Chart Structure Analysis.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-wrapper">🌱</div>
+          <h3>Beginner Friendly</h3>
+          <p>బిగినర్స్ కోసం పాయింట్ టు పాయింట్ స్టాక్ మార్కెట్ బేసిక్స్ వివరణ.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-wrapper">🛡️</div>
+          <h3>Risk Management</h3>
+          <p>మీ క్యాపిటల్ కాపాడుకోవడానికి Position Sizing & Risk Control సూత్రాలు.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-wrapper">📰</div>
+          <h3>Market Updates</h3>
+          <p>ముఖ్యమైన ఫైనాన్షియల్ న్యూస్ మరియు మార్కెట్ అప్‌డేట్స్ ఎప్పటికప్పుడు.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-wrapper">🤝</div>
+          <h3>100% Free Community</h3>
+          <p>ఎలాంటి హిడెన్ ఛార్జీలు లేవు. ఉచితంగా నేర్చుకునే అవకాశం.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon-wrapper">✅</div>
+          <h3>No Fake Promises</h3>
+          <p>ఫేక్ ప్రాఫిట్స్ లేదా రాబడి హామీలు ఉండవు. ప్యూర్ ఎడ్యుకేషన్ మాత్రమే.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container glass-card">
+      <h2>మీ స్టాక్ మార్కెట్ నాలెడ్జ్ పెంచుకోవడానికి సిద్ధంగా ఉన్నారా?</h2>
+      <p>ఇప్పుడే వేలాది మంది తెలుగు ట్రేడర్లతో కలిసి మా Telegram ఛానల్‌లో జాయిన్ అవ్వండి.</p>
+      <button class="cta-btn telegram-trigger" aria-label="Join Free Telegram Community">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.25.38-.51 1.07-.78 4.18-1.82 6.97-3.02 8.37-3.61 3.98-1.66 4.81-1.95 5.35-1.96.12 0 .38.03.55.17.14.12.18.28.2.4.02.14.02.34 0 .58z"/>
+        </svg>
+        JOIN FREE TELEGRAM
+      </button>
+    </div>
+  </section>
+
+  <div class="mobile-sticky-cta">
+    <button class="cta-btn sticky-btn telegram-trigger" aria-label="Join Free Telegram Channel Mobile">
+      JOIN FREE TELEGRAM
+    </button>
+  </div>
+
+  <button class="floating-tg-btn telegram-trigger" aria-label="Telegram Floating Button">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="#ffffff">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.25.38-.51 1.07-.78 4.18-1.82 6.97-3.02 8.37-3.61 3.98-1.66 4.81-1.95 5.35-1.96.12 0 .38.03.55.17.14.12.18.28.2.4.02.14.02.34 0 .58z"/>
+    </svg>
+  </button>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
+
+  <footer class="footer-section">
+    <div class="container">
+      <div class="footer-links">
+        <button onclick="openModal('privacyModal')">Privacy Policy</button>
+        <button onclick="openModal('termsModal')">Terms & Conditions</button>
+        <button onclick="openModal('disclaimerModal')">Disclaimer</button>
+        <button onclick="openModal('contactModal')">Contact Us</button>
+      </div>
+      <p class="copyright">&copy; 2026 Telugu Stock Market Learning Community. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <div id="privacyModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('privacyModal')">&times;</button>
+      <h2>Privacy Policy</h2>
+      <p>We respect your privacy. We do not sell or share personal identification information of users under any circumstances.</p>
+    </div>
+  </div>
+
+  <div id="termsModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('termsModal')">&times;</button>
+      <h2>Terms & Conditions</h2>
+      <p>All content in our community is strictly for educational purposes. Nothing shared constitutes financial advice.</p>
+    </div>
+  </div>
+
+  <div id="disclaimerModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('disclaimerModal')">&times;</button>
+      <h2>Risk Disclaimer</h2>
+      <p><strong>Not SEBI Registered:</strong> We are not SEBI-registered investment advisors. Stock market trading carries risk of loss.</p>
+    </div>
+  </div>
+
+  <div id="contactModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('contactModal')">&times;</button>
+      <h2>Contact Us</h2>
+      <p>Email: support@yourdomain.com</p>
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Message Sent!'); closeModal('contactModal');">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="3" placeholder="Your Message" required></textarea>
+        <button type="submit" class="cta-btn" style="border-radius:6px; padding: 10px;">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const telegramLink = "https://t.me/+mvZaXLHQ56gxMDBl";
+    let isNavigating = false;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const triggers = document.querySelectorAll(".telegram-trigger");
+      triggers.forEach((btn) => btn.addEventListener("click", handleTelegramClick));
+
+      const backToTopBtn = document.getElementById("backToTop");
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+      }
+
+      window.addEventListener("scroll", () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+
+        const progressBar = document.getElementById("scroll-progress");
+        if (progressBar) progressBar.style.width = scrolled + "%";
+
+        if (backToTopBtn) backToTopBtn.style.display = winScroll > 300 ? "flex" : "none";
+      });
+
+      document.addEventListener("contextmenu", (e) => e.preventDefault());
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "F12" || (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key)) || (e.ctrlKey && e.key === "U")) {
+          e.preventDefault();
+        }
+      });
+    });
+
+    function handleTelegramClick(e) {
+      e.preventDefault();
+      if (isNavigating) return;
+      isNavigating = true;
+
+      if (typeof fbq === "function") {
+        try { fbq("track", "Subscribe"); } catch (err) {}
+      }
+
+      setTimeout(() => { window.location.href = telegramLink; }, 120);
+    }
+
+    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+  </script>
+</body>
+</html>>
